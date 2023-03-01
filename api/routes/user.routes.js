@@ -7,7 +7,11 @@ const {
   getAllUsers,
   getStatsUser,
 } = require("../controllers/user.controller");
+const {
+  verifyToken,
+  verifyTokenAndAuthorization,
+} = require("../middleware/verifyToken");
 
-router.route("/user").post(updateUser);
+router.route("/:id").put(verifyTokenAndAuthorization, updateUser);
 
 module.exports = router;
