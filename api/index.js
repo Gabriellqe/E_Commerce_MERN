@@ -9,7 +9,7 @@ const authRoute = require("./routes/auth.routes");
 require("dotenv").config();
 app.use(express.json());
 app.use("/api/v1", authRoute);
-app.use("/api/v1", userRoute);
+app.use("/api/v1/user", userRoute);
 
 const start = async () => {
   try {
