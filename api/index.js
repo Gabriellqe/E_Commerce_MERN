@@ -3,13 +3,21 @@ const app = express();
 const port = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const connectDB = require("./db/connect");
-const userRoute = require("./routes/user.routes");
 const authRoute = require("./routes/auth.routes");
+const userRoute = require("./routes/user.routes");
+const productsRoute = require("./routes/product.routes");
+const cartRoute = require("./routes/cart.routes");
+const orderRoute = require("./routes/order.routes");
+const stripeRoute = require("./routes/stripe.routes");
 
 require("dotenv").config();
 app.use(express.json());
-app.use("/api/v1", authRoute);
+app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/products", productsRoute);
+app.use("/api/v1/cart", cartRoute);
+app.use("/api/v1/orders", orderRoute);
+app.use("/api/v1/payment", stripeRoute);
 
 const start = async () => {
   try {
